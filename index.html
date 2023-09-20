@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css
+
+
+
+    ">
+</head>
+
+<body>
+    <div><h1>TO DO LIST </h1></div>
+    <main>
+    
+        <div class="box">
+            <input type="text" id="items" placeholder="Enter your listitems !">
+            <ul id="to-do-box">
+            </ul>
+
+        </div>
+    </main>
+
+</body>
+<script>
+    let items = document.querySelector('#items');
+
+    let todobox = document.querySelector('#to-do-box');
+
+    console.log("items are ",items,todobox);
+
+    items.addEventListener(
+        'keyup',
+        function () {
+            // console.log(event.key)
+            if (event.key == "Enter") {
+                // console.log(this.value)
+                addtodo(this.value)
+                this.value = "";
+            }
+        }
+
+    )
+    const addtodo = (items) => {
+        console.log("function inside items are",items)
+        const listitems = document.createElement('li')
+        console.log("list items are",listitems);
+        listitems.innerHTML = `${items} <i class="fas fa-times"></i>    `
+        listitems.addEventListener(
+            'click',
+            function () {
+                this.classList.toggle('done')
+
+            }
+        )
+        listitems.querySelector('i').addEventListener(
+            'click',
+            function () {
+                listitems.remove()
+            }
+        )
+        todobox.appendChild(listitems)
+    }
+
+</script>
+
+</html>
